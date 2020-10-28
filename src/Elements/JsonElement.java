@@ -1,3 +1,5 @@
+package Elements;
+
 public class JsonElement extends Element {
 
     public JsonElement(String uuid) {

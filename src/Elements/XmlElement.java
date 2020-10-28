@@ -1,3 +1,5 @@
+package Elements;
+
 public class XmlElement extends Element {
 
     public XmlElement(String uuid) {
