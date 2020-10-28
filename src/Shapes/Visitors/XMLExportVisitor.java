@@ -1,4 +1,6 @@
-package Shapes;
+package Shapes.Visitors;
+
+import Shapes.GeometricShapes.*;
 
 public class XMLExportVisitor implements Visitor {
 
@@ -36,24 +38,6 @@ public class XMLExportVisitor implements Visitor {
                 "    <width>" + r.getWidth() + "</width>" + "\n" +
                 "    <height>" + r.getHeight() + "</height>" + "\n" +
                 "</rectangle>";
-    }
-
-    public String visitCompoundGraphic(CompoundShape cg) {
-        return "<compound_graphic>" + "\n" +
-                "   <id>" + cg.getId() + "</id>" + "\n" +
-                _visitCompoundGraphic(cg) +
-                "</compound_graphic>";
-    }
-
-    private String _visitCompoundGraphic(CompoundShape cg) {
-        StringBuilder sb = new StringBuilder();
-        for (Shape shape : cg.children) {
-            String obj = shape.accept(this);
-            // Proper indentation for sub-objects.
-            obj = "    " + obj.replace("\n", "\n    ") + "\n";
-            sb.append(obj);
-        }
-        return sb.toString();
     }
 
 }

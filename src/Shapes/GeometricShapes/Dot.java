@@ -1,4 +1,6 @@
-package Shapes;
+package Shapes.GeometricShapes;
+
+import Shapes.Visitors.Visitor;
 
 public class Dot implements Shape {
     private int id;

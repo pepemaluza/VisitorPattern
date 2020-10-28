@@ -1,4 +1,6 @@
-package Shapes;
+package Shapes.Visitors;
+
+import Shapes.GeometricShapes.*;
 
 public class JSONExportVisitor implements Visitor {
 
@@ -46,23 +48,4 @@ public class JSONExportVisitor implements Visitor {
                 "}" + "\n" ;
     }
 
-    @Override
-    public String visitCompoundGraphic(CompoundShape cg) {
-        return "'compoundGraphic' :" + "\n" +
-                "{" + "\n" +
-                "    'id' : '" + cg.getId() + "'" + "\n" +
-                _visitCompoundGraphic(cg) +
-                "}" + "\n";
-    }
-
-    private String _visitCompoundGraphic(CompoundShape cg) {
-        StringBuilder sb = new StringBuilder();
-        for (Shape shape : cg.children) {
-            String obj = shape.accept(this);
-            // Proper indentation for sub-objects.
-            obj = "    " + obj.replace("\n", "\n   ") + "\n";
-            sb.append(obj);
-        }
-        return sb.toString();
-    }
 }
